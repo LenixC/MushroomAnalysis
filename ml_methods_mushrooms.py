@@ -9,6 +9,7 @@ Created on Tue Apr 18 00:30:29 2023
 import pandas as pd
 from pandas.api.types import is_numeric_dtype
 import numpy as np
+import matplotlib.pyplot as plt
 
 #ML Models
 from sklearn.linear_model import LogisticRegression
@@ -22,7 +23,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score
 
-mushrooms = pd.read_csv('/Users/chrisfeng/Desktop/CS470_Final_Project/MushroomAnalysis/secondary_data_shuffled.csv', sep=';')
+mushrooms = pd.read_csv('secondary_data_shuffled.csv', sep=';')
 
 #Replace NAs
 for col in mushrooms: 

@@ -48,19 +48,21 @@ y_test = np.array(y_test)
 acc = {}
 f1 = {}
 
+#Logistic Regression
 logit = LogisticRegression(penalty='l2', solver='saga')
 logit.fit(x_train, y_train)
 yHat = logit.predict(x_test)
 acc["logit"] = accuracy_score(y_test, yHat)
 f1["logit"] = f1_score(y_test, yHat)
 
-
+#Single Layer Perceptron
 clf = Perceptron(tol=1e-3, random_state=0)
 clf.fit(x_train, y_train)
 yHat = clf.predict(x_test)
 acc["perceptron"] = accuracy_score(y_test, yHat)
 f1["perceptron"] = f1_score(y_test, yHat)
 
+#Neural Network
 mlp = MLPClassifier(solver='lbfgs', alpha=1e-5,\
                     hidden_layer_sizes=(5, 2), random_state=1)
 mlp.fit(x_train, y_train)
@@ -68,12 +70,8 @@ yHat = mlp.predict(x_test)
 acc["nn"] = accuracy_score(y_test, yHat)
 f1["nn"] = f1_score(y_test, yHat)
 
-nb = BernoulliNB()
-nb.fit(x_train,y_train)
-yHat = nb.predict(x_test)
-acc["nb"] = accuracy_score(y_test, yHat)
-f1["nb"] = f1_score(y_test, yHat)
 
+#Decision Tree
 dt = DecisionTreeClassifier(min_samples_leaf=20)
 dt.fit(x_train, y_train)
 yHat = dt.predict(x_test)
